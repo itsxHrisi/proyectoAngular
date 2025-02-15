@@ -1,0 +1,51 @@
+<nav class="navbar navbar-expand-lg bg-brand-blue">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" 
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['home']" [routerLinkActive]="'active'">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['main']" [routerLinkActive]="'active'">Main</a>
+        </li>
+        <li *ngIf="logged" class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['table']" [routerLinkActive]="'active'">Table</a>
+        </li>
+        <li *ngIf="!logged" class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['login']" [routerLinkActive]="'active'">Login</a>
+        </li>
+        <li *ngIf="!logged" class="nav-item">
+          <a class="nav-link" aria-current="page" [routerLink]="['register']" [routerLinkActive]="'active'">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['create_recipe']" [routerLinkActive]="'active'">Create</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['sharedrecipes']" [routerLinkActive]="'active'">Shared Recipes</a>
+        </li>
+        <li *ngIf="logged" class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            {{ user?.email }}
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        </li>
+      </ul>
+
+      <!-- ✅ Formulario de búsqueda corregido -->
+      <form [formGroup]="searchForm" class="d-flex" role="search">
+        <input #searchInput class="form-control me-2" type="search" placeholder="Search" aria-label="Search" formControlName="searchInput">
+        <button class="btn btn-outline-success" type="button" (click)="onSearch()">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
