@@ -41,4 +41,4 @@ jobs:
         echo ${{ secrets.REMOTE_HOST }}
         ssh-keyscan -H ${{ secrets.REMOTE_HOST }} >> ~/.ssh/known_hosts
         echo "Added ${{ secrets.REMOTE_HOST }} to known_hosts."
-        sshpass -p "${REMOTE_PASSWORD}" scp -r /home/runner/work/rag2daw2025frontend/rag2daw2025frontend/dist/rag2daw2025frontend/browser/* ${REMOTE_USER}@${REMOTE_HOST}:/home/administrador/frontend/www/html
+        sshpass -p "${REMOTE_PASSWORD}" scp -r /home/runner/work/proyectoAngular/proyectoAngular/dist/myrecipes/browser/* ${REMOTE_USER}@${REMOTE_HOST}:/home/administrador/frontend/www/html
