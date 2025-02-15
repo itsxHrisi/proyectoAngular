@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { SupabaseService } from '../../services/supabase.service';
-import { v4 as uuidv4 } from 'uuid'; // Importa esta función para generar UUID
+import { v4 as uuidv4 } from 'uuid';//Importe esto per a solucionar el problema de idMeals
 
 @Component({
   selector: 'app-create-recipe',
@@ -80,19 +80,17 @@ export class CreateRecipeComponent implements OnInit {
     if (this.mealForm.valid) {
       let mealData = this.mealForm.value;
   
-      // Convertir 'ingredients' a 'idIngredients'
       mealData = {
         ...mealData,
-        idIngredients: mealData.ingredients, // Renombrar el campo
+        idIngredients: mealData.ingredients, 
       };
-      delete mealData.ingredients; // Eliminar el campo antiguo
+      delete mealData.ingredients; 
   
       if (this.recipeID) {
         this.supaService.updateMeal(this.recipeID, mealData)
           .then(() => console.log('Receta actualizada con éxito'))
           .catch(error => console.error('Error al actualizar la receta:', error));
       } else {
-        // Generar un idMeal si no existe
         mealData.idMeal = uuidv4(); 
   
         this.supaService.createMeal(mealData)

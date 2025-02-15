@@ -38,7 +38,7 @@ export class HeaderComponent implements OnInit, AfterViewInit {
         debounceTime(400),
         distinctUntilChanged()
       )
-      .subscribe(text => this.search.emitText(text));
+      .subscribe(text => this.search.emitText(text));//emisio del text a un altre component
   }
 
   ngOnInit(): void {

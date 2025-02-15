@@ -20,7 +20,7 @@ export class RecipeTableComponent  implements OnInit{
   constructor(private searchService: SearchServiceService){}
 
   ngOnInit(): void {
-    this.searchSubscription = this.searchService.textObservable.
+    this.searchSubscription = this.searchService.textObservable.//Cambie la variable que gastes tu per la que he creat jo que se actualiza cada 400 ms
     //  pipe(map(searchValue => searchValue.toLowerCase()))
       subscribe(searchValue =>{
       this.searchValue = searchValue;
